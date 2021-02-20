@@ -36,19 +36,19 @@ class Node
 
     public function insert($key)
     {
-        if ($this->key === null) {
+        if (is_null($this->key)) {
             $this->key = $key;
         }
-        if ($key > $this->key && $this->right === null) {
-            $this->right = new Node($key);
-        }
-        if ($key > $this->key && $this->right !== null) {
+        if ($key > $this->key) {
+            if (is_null($this->right)) {
+                $this->right = new Node($key);
+            }
             $this->right->insert($key);
         }
-        if ($key < $this->key && $this->left === null) {
-            $this->left = new Node($key);
-        }
-        if ($key < $this->key && $this->left !== null) {
+        if ($key < $this->key) {
+            if (is_null($this->left)) {
+                $this->left = new Node($key);
+            }
             $this->left->insert($key);
         }
     }
