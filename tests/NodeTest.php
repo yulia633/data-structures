@@ -67,4 +67,63 @@ class NodeTest extends TestCase
         $this->assertNull($tree->getRight()->getRight()->getLeft()->getLeft());
         $this->assertNull($tree->getRight()->getRight()->getLeft()->getRight());
     }
+
+    public function testSearch()
+    {
+        $expected1 = new Node(5);
+        $expected2 = new Node(22, new Node(20), null);
+        $tree = new Node(
+            9,
+            new Node(
+                4,
+                new Node(3),
+                new Node(
+                    6,
+                    $expected1,
+                    new Node(7)
+                )
+            ),
+            new Node(
+                17,
+                null,
+                $expected2
+            )
+        );
+
+        $this->assertEquals($expected1, $tree->search(5));
+        $this->assertEquals($expected2, $tree->search(22));
+        $this->assertNull($tree->search(35));
+        $this->assertNull($tree->search(2));
+    }
+
+    public function testSearchAlgorithm()
+    {
+        $tree = new Node(
+            9,
+            new Node(
+                4,
+                new Node(
+                    6,
+                    new Node(5),
+                    new Node(7)
+                ),
+                new Node(3)
+            ),
+            new Node(
+                17,
+                null,
+                new Node(
+                    22,
+                    null,
+                    new Node(20)
+                )
+            )
+        );
+
+        $this->assertNull($tree->search(5));
+        $this->assertNull($tree->search(7));
+        $this->assertNull($tree->search(6));
+        $this->assertEquals(4, $tree->search(4)->getKey());
+        $this->assertEquals(22, $tree->search(22)->getKey());
+    }
 }

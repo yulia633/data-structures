@@ -52,4 +52,19 @@ class Node
             $this->left->insert($key);
         }
     }
+
+
+    public function search($key)
+    {
+        if ($key === $this->key) {
+            return $this;
+        }
+        if ($key < $this->key && $this->left) {
+            return $this->left->search($key);
+        }
+        if ($key > $this->key && $this->right) {
+            return $this->right->search($key);
+        }
+        return null;
+    }
 }
