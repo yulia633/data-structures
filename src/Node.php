@@ -4,14 +4,28 @@ namespace App;
 
 /**
  * Class Node
- * The node inside a binary tree
+ * Represent a node inside a binary tree
  */
 class Node
 {
+    /**
+     * @var mixed
+     */
     private $key;
+
+    /**
+     * @var Node|null
+     */
     private $left;
+
+    /**
+     * @var Node|null
+     */
     private $right;
 
+    /**
+     * Construct an instance od a Node
+     */
     public function __construct($key = null, $left = null, $right = null)
     {
         $this->key = $key;
@@ -19,21 +33,38 @@ class Node
         $this->right = $right;
     }
 
+    /**
+     * Get the left child node
+     * @return Node|null
+     */
     public function getLeft()
     {
         return $this->left;
     }
 
+    /**
+     * Get the right child node
+     * @return Node|null
+     */
     public function getRight()
     {
         return $this->right;
     }
 
+    /**
+     * Get the key child node
+     * @return mixed
+     */
     public function getKey()
     {
         return $this->key;
     }
 
+    /**
+     * Insert a node into the tree
+     * @param mixed $key
+     * @return Node
+     */
     public function insert($key)
     {
         if (is_null($this->key)) {
@@ -53,7 +84,11 @@ class Node
         }
     }
 
-
+    /**
+     * The search in the tree
+     * @param mixed $key
+     * @return Node|null
+     */
     public function search($key)
     {
         if ($key === $this->key) {
