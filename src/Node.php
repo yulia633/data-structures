@@ -11,17 +11,17 @@ class Node
     /**
      * @var mixed
      */
-    private $key;
+    protected $key;
 
     /**
      * @var Node|null
      */
-    private $left;
+    protected $left;
 
     /**
      * @var Node|null
      */
-    private $right;
+    protected $right;
 
     /**
      * Construct an instance od a Node
